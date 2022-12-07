@@ -27,7 +27,6 @@ $ ls
 7214296 k`*/
 
 const DATA = read('07-nospace/data')
-const MAX = 100000
 
 class Tree {
 	constructor(name) {
@@ -100,9 +99,12 @@ DATA.split('\n').forEach(line => {
 	}
 })
 
+const USED = 70000000 - rootTree.size()
+const NEEDED = 30000000 - USED
 const list = rootTree.list()
 
-console.log(list.map(node => node.size()).filter(size => size <= MAX).reduce(sum, 0))
+console.log(USED)
+console.log(list.map(node => node.size()).filter(size => size >= NEEDED).sort((a, b) => a - b))
 
 // TOO LOW: 1193346
 // TOO LOW: 1412245
